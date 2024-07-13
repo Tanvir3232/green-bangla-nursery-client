@@ -1,4 +1,5 @@
-import { Button } from "./components/ui/button"
+import { Outlet } from "react-router-dom"
+import Header from "./components/common/Header"
 
 
 function App() {
@@ -6,8 +7,8 @@ function App() {
 
   return (
     <>
-      <h1 className="font-bold">Welcome to Green Bangla Nursery </h1>
-      <Button>Hellow World</Button>
+      <Header />
+      <Outlet />
     </>
   )
 }
