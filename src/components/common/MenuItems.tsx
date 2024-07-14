@@ -27,13 +27,14 @@ const MenuItems = () => {
             isDropdown: true,
             items: categoryItems,
         },
-        {
-            name: 'Product Manage',
-            route: '/product-manage',
-        },
+
         {
             name: 'Cart',
             route: '/cart',
+        },
+        {
+            name: 'Product Manage',
+            route: '/product-manage',
         },
     ];
 
