@@ -1,5 +1,6 @@
 import { useGetProductsQuery, useRemoveProductMutation } from "@/redux/api/api";
 import { FaPenToSquare, FaRegTrashCan } from "react-icons/fa6";
+import Swal from "sweetalert2";
 import { Button } from "../ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 
@@ -8,7 +9,26 @@ const ProductTable = () => {
     const [removeProduct] = useRemoveProductMutation();
     console.log(products?.data);
 
-
+    const handleDeleteProduct = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                removeProduct(id);
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Product has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
     if (isLoading) {
         return <p>Loading...</p>
     }
@@ -36,7 +56,7 @@ const ProductTable = () => {
                         <TableCell>{product.price}</TableCell>
                         <TableCell className="text-right">{product.price}</TableCell>
                         <TableCell className="flex gap-3">
-                            <Button onClick={() => removeProduct(product._id)} variant="outline" className="hover:bg-red-500 px-3 hover:text-gray-100 border-red-500">
+                            <Button onClick={() => handleDeleteProduct(product._id)} variant="outline" className="hover:bg-red-500 px-3 hover:text-gray-100 border-red-500">
                                 <FaRegTrashCan className="size-5" />
                             </Button>
                             <Button variant="outline" className="hover:bg-blue-500 px-3 hover:text-gray-100 border-blue-500">
