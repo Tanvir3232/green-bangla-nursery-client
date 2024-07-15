@@ -36,38 +36,47 @@ const ProductTable = () => {
         return <p>Something went wrong</p>
     }
     return (
-        <Table>
+        <>
+            {
+                products?.data?.length == 0
+                    ? <div className="text-center border p-5 rounded-md my-3 text-red-400 font-semibold text-xl">
+                        No Products Found
+                    </div>
+                    : <Table>
 
-            <TableHeader>
+                        <TableHeader>
 
-                <TableRow>
-                    <TableHead >Title</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Price</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
-                    <TableHead>Actions</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {products?.data?.map((product) => (
-                    <TableRow key={product._id}>
-                        <TableCell className="font-medium">{product.title}</TableCell>
-                        <TableCell>{product.category}</TableCell>
-                        <TableCell>{product.price}</TableCell>
-                        <TableCell className="text-right">{product.price}</TableCell>
-                        <TableCell className="flex gap-3">
-                            <Button onClick={() => handleDeleteProduct(product._id)} variant="outline" className="hover:bg-red-500 px-3 hover:text-gray-100 border-red-500">
-                                <FaRegTrashCan className="size-5" />
-                            </Button>
-                            <Button variant="outline" className="hover:bg-blue-500 px-3 hover:text-gray-100 border-blue-500">
-                                <FaPenToSquare className="size-5" />
-                            </Button>
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
+                            <TableRow>
+                                <TableHead >Title</TableHead>
+                                <TableHead>Category</TableHead>
+                                <TableHead>Price</TableHead>
+                                <TableHead className="text-right">Price</TableHead>
+                                <TableHead>Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {products?.data?.map((product) => (
+                                <TableRow key={product._id}>
+                                    <TableCell className="font-medium">{product.title}</TableCell>
+                                    <TableCell>{product.category}</TableCell>
+                                    <TableCell>{product.price}</TableCell>
+                                    <TableCell className="text-right">{product.price}</TableCell>
+                                    <TableCell className="flex gap-3">
+                                        <Button onClick={() => handleDeleteProduct(product._id)} variant="outline" className="hover:bg-red-500 px-3 hover:text-gray-100 border-red-500">
+                                            <FaRegTrashCan className="size-5" />
+                                        </Button>
+                                        <Button variant="outline" className="hover:bg-blue-500 px-3 hover:text-gray-100 border-blue-500">
+                                            <FaPenToSquare className="size-5" />
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
 
-        </Table>
+                    </Table>
+            }
+
+        </>
     )
 }
 
