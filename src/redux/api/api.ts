@@ -16,6 +16,15 @@ export const baseApi = createApi({
             },
             providesTags: ['product']
         }),
+        getProduct: builder.query({
+            query: (id) => {
+                return {
+                    url: `/products/${id}`,
+                    method: "GET"
+                }
+            },
+            providesTags: ['product']
+        }),
         removeProduct: builder.mutation({
             query: (id) => {
                 console.log("Inside base api", id);
@@ -37,7 +46,15 @@ export const baseApi = createApi({
                 }
             },
             invalidatesTags: ['product']
+        }),
+        updateProduct: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/products/${id}`,
+                method: "PATCH",
+                body: data
+            }),
+            invalidatesTags: ['product']
         })
     })
 })
-export const { useGetProductsQuery, useRemoveProductMutation, useAddProductMutation } = baseApi;
+export const { useGetProductsQuery, useRemoveProductMutation, useAddProductMutation, useGetProductQuery, useUpdateProductMutation } = baseApi;
