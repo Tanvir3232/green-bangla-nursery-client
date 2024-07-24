@@ -54,11 +54,12 @@ const ProductTable = () => {
                     </div>
                     : <Table>
                         <TableHeader>
-                            <TableRow>
+                            <TableRow >
                                 <TableHead>Title</TableHead>
                                 <TableHead>Category</TableHead>
                                 <TableHead>Price</TableHead>
                                 <TableHead className="text-right">Quantity</TableHead>
+                                <TableHead className="text-center">Image</TableHead>
                                 <TableHead>Actions</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -69,9 +70,14 @@ const ProductTable = () => {
                                     <TableCell>{product.category}</TableCell>
                                     <TableCell>{product.price}</TableCell>
                                     <TableCell className="text-right">{product.quantity}</TableCell>
-                                    <TableCell className="flex gap-3">
+                                    <TableCell className="flex justify-center items-center">
+                                        <figure className="w-40 h-28">
+                                            <img src={product.image} className="rounded-md w-full h-full object-cover" alt="" />
+                                        </figure>
+                                    </TableCell>
+                                    <TableCell className="space-x-3">
                                         <Button onClick={() => handleDeleteProduct(product._id)} variant="outline" className="hover:bg-red-500 px-3 hover:text-gray-100 border-red-500">
-                                            <FaRegTrashCan className="size-5" />
+                                            <FaRegTrashCan className="size-5 " />
                                         </Button>
 
                                         <Button onClick={() => handleEditProduct(product._id)} variant="outline" className="hover:bg-blue-500 px-3 hover:text-gray-100 border-blue-500">
