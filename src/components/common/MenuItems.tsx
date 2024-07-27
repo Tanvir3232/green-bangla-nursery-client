@@ -6,15 +6,22 @@ import { NavLink } from 'react-router-dom';
 
 const MenuItems = () => {
     const categories = useAppSelector(selectAllCategories);
-    console.log(categories)
-    const categoryItems: MenuProps['items'] = categories.map(item => ({
-        key: item,
-        label: <NavLink className={({ isActive }) =>
-            isActive ? 'border-b-2 border-[#1677FF] pb-1' : ''
-        } to={`categories/${item}`}>
-            {item}</NavLink>
-    }))
 
+    const categoryItems: MenuProps['items'] = categories.map(item => ({
+        key: item.name,
+        label: (
+            <NavLink
+                className={
+                    `${({ isActive }) =>
+                        isActive ? 'border-b-2 border-[#1677FF] pb-1' : ''} text-md font-semibold`
+                }
+                to={`categories/${item.name}`}
+            >
+                <img src={item.icon} alt={item.name} className="w-6 h-6 mr-2 rounded-md inline-block" />
+                {item.name}
+            </NavLink>
+        )
+    }));
 
     const menus = [
         {
@@ -27,7 +34,6 @@ const MenuItems = () => {
             isDropdown: true,
             items: categoryItems,
         },
-
         {
             name: 'Cart',
             route: '/cart',
@@ -50,7 +56,6 @@ const MenuItems = () => {
                                         {item.name}
                                         <DownOutlined />
                                     </div>
-
                                 </Space>
                             </a>
                         </Dropdown>
@@ -58,8 +63,9 @@ const MenuItems = () => {
                 ) : (
                     <li key={item.name}>
                         <NavLink
-                            className={({ isActive }) =>
-                                isActive ? 'border-b-2 border-[#1677FF] pb-1' : ''
+                            className={
+                                `${({ isActive }) =>
+                                    isActive ? 'border-b-2 border-[#1677FF] pb-1' : ''} text-md`
                             }
                             to={item.route}
                         >

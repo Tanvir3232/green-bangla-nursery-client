@@ -1,20 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
+type TCategory = {
+    name: string;
+    icon: string;
+}
 
 type TInitialState = {
-    categories: string[];
+    categories: TCategory[];
 }
+
 const initialState: TInitialState = {
-    categories: ["Indoor", "Outdoor", "Medicinal", "Flowering", "Fruit"]
+    categories: [
+        { name: "Indoor", icon: "/icons/indoor.png" },
+        { name: "Outdoor", icon: "/icons/outdoor.png" },
+        { name: "Medicinal", icon: "/icons/medicinal.png" },
+        { name: "Flowering", icon: "/icons/flowering.png" },
+        { name: "Fruit", icon: "/icons/fruit.png" }
+    ]
 }
+
 const categorySlice = createSlice({
     name: 'category',
     initialState,
-    reducers: {
-
-    }
+    reducers: {}
 })
+
 export const selectAllCategories = (state: RootState) => state.categories.categories;
 
 export default categorySlice.reducer;
