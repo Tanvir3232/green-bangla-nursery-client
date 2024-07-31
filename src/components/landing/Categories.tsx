@@ -8,8 +8,8 @@ const Categories = () => {
 
     return (
         <div className="my-8 lg:mx-12 mx-4">
-            <h1 className="text-4xl font-bold text-center text-[#083214]">Categories</h1>
-            <ul className="flex justify-between items-center mt-5 space-x-4">
+            <h1 className="text-4xl font-bold my-5 text-center text-[#083214]">Categories</h1>
+            <ul className="grid lg:grid-cols-5 md:grid-cols-5  sm:grid-cols-5 grid-cols-3 justify-evenly items-center  gap-5">
                 {categories.map((category, index) => (
                     <Link to={`/categories/${category.name}`} key={index} className="relative cursor-pointer flex flex-col lg:flex-row  items-center justify-center rounded-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
                         <figure className="w-full h-full">
