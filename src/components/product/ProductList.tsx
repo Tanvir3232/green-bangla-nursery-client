@@ -2,7 +2,7 @@ import { useGetProductsQuery } from "@/redux/api/api";
 import { selectAllCategories } from "@/redux/features/categorySlice";
 import { selectSelectedCategories, selectSort, setSort, toggleCategory } from "@/redux/features/filterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
@@ -35,7 +35,7 @@ const ProductList = () => {
                         </SelectTrigger>
                         <SelectContent>
                             <SelectGroup>
-                                <SelectLabel>default</SelectLabel>
+
                                 <SelectItem value="default">Default</SelectItem>
                                 <SelectItem value="low">Low to high</SelectItem>
                                 <SelectItem value="high">High to Low</SelectItem>

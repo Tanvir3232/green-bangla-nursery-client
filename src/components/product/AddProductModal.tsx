@@ -16,7 +16,7 @@ import { Textarea } from "../ui/textarea";
 const AddProductModal = () => {
     const { register, handleSubmit, reset, formState: { errors, isSubmitted } } = useForm();
     const categories = useAppSelector(selectAllCategories);
-    console.log("From Add Product Component:", categories);
+
     const [selectedCategory, setSelectedCategory] = useState('');
     const [addProduct, { isError, isSuccess }] = useAddProductMutation();
     const [dialogOpen, setDialogOpen] = useState(false);

@@ -13,7 +13,6 @@ import { Textarea } from '../ui/textarea';
 
 const EditProductModal = ({ productId, open, onClose }) => {
 
-    console.log(productId)
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { data: product, isLoading } = useGetProductQuery(productId, { skip: !open });
     const [updateProduct, { isSuccess }] = useUpdateProductMutation();
@@ -26,7 +25,7 @@ const EditProductModal = ({ productId, open, onClose }) => {
             setSelectedCategory(product.data.category);
         }
     }, [product, reset]);
-    console.log(product?.data)
+
 
     const onSubmit = async (formData: FieldValues) => {
         const updatedData = {
@@ -83,7 +82,7 @@ const EditProductModal = ({ productId, open, onClose }) => {
                                         <SelectContent>
                                             <SelectGroup>
                                                 {categories.map((item) => (
-                                                    <SelectItem key={item} value={item}>{item}</SelectItem>
+                                                    <SelectItem key={item.name} value={item.name}>{item.name}</SelectItem>
                                                 ))}
                                             </SelectGroup>
                                         </SelectContent>

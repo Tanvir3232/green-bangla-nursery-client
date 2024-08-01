@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { baseApi } from './api/api'
+import cartSlice from './features/cartSlice'
 import categorySlice from './features/categorySlice'
 import filterSlice from './features/filterSlice'
 
@@ -7,7 +8,8 @@ export const store = configureStore({
     reducer: {
         [baseApi.reducerPath]: baseApi.reducer,
         filter: filterSlice,
-        categories: categorySlice
+        categories: categorySlice,
+        cart: cartSlice
     },
     middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(baseApi.middleware)
 })
