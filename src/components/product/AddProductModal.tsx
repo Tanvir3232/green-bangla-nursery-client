@@ -30,7 +30,7 @@ const AddProductModal = () => {
             ...formData,
             category: selectedCategory,
             price: parseFloat(formData.price),
-            quantity: parseInt(formData.quantity),
+            stock: parseInt(formData.stock),
             rating: parseFloat(formData.rating)
         };
         try {
@@ -117,12 +117,12 @@ const AddProductModal = () => {
                             </div>
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="quantity" className="text-right">
-                                Quantity
+                            <Label htmlFor="stock" className="text-right">
+                                Stock
                             </Label>
-                            <Input id="quantity" inputMode="numeric" type="number" className="col-span-3" {...register("quantity", { required: true })} />
+                            <Input id="stock" inputMode="numeric" type="number" className="col-span-3" {...register("stock", { required: true })} />
                             <div className="col-span-4 text-right">
-                                {errors.quantity && <span className="text-red-500">This field is required</span>}
+                                {errors.stock && <span className="text-red-500">This field is required</span>}
                             </div>
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">

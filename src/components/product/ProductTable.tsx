@@ -58,7 +58,7 @@ const ProductTable = () => {
                                 <TableHead>Title</TableHead>
                                 <TableHead>Category</TableHead>
                                 <TableHead>Price</TableHead>
-                                <TableHead className="text-right">Quantity</TableHead>
+                                <TableHead className="text-right">Stock Quantity</TableHead>
                                 <TableHead className="text-center">Image</TableHead>
                                 <TableHead>Actions</TableHead>
                             </TableRow>
@@ -69,7 +69,7 @@ const ProductTable = () => {
                                     <TableCell className="font-medium">{product.title}</TableCell>
                                     <TableCell>{product.category}</TableCell>
                                     <TableCell>{product.price}</TableCell>
-                                    <TableCell className="text-right">{product.quantity}</TableCell>
+                                    <TableCell className="text-right">{product.stock}</TableCell>
                                     <TableCell className="flex justify-center items-center">
                                         <figure className="w-40 h-28">
                                             <img src={product.image} className="rounded-md w-full h-full object-cover" alt="" />
