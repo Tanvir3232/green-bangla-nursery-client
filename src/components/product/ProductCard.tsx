@@ -38,7 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     return (
         <Link to={`/products/${_id}`} className="lg:h-[300px] md:h-[300px] h-[400px] border border-slate-300 w-full rounded-md shadow-sm hover:shadow-lg p-3 overflow-hidden flex flex-col justify-between">
-            <figure className="lg:w-48 w-full h-full lg:h-36 rounded-md overflow-hidden">
+            <figure className=" w-full h-full lg:h-36 rounded-md overflow-hidden">
                 <img className="object-cover w-full h-full" src={image} alt={title} />
             </figure>
             <div>
