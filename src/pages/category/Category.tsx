@@ -18,7 +18,7 @@ const Category = () => {
             if (sort === 'high') return b.price - a.price;
             return 0;
         });
-    console.log(filteredProducts)
+
     return (
         <div className="w-full ">
             <figure className="w-full relative bg-slate-700 h-full">
@@ -34,7 +34,8 @@ const Category = () => {
             <section className="my-5 mx-4 lg:mx-12">
                 <h1 className="text-4xl font-bold  text-center text-[#083214]">Products</h1>
 
-                <div className="flex justify-end mt-2">
+                <div className="flex justify-end items-center mt-2">
+
                     <PriceSortFilter />
                 </div>
                 {
