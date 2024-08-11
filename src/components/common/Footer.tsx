@@ -2,6 +2,7 @@ import { CiFacebook, CiLocationOn } from "react-icons/ci";
 import { FaArrowCircleRight, FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { TiSocialLinkedinCircular, TiSocialTwitterCircular } from "react-icons/ti";
+import { Link } from "react-router-dom";
 import MenuItems from "./MenuItems";
 const Footer = () => {
     return (
@@ -12,9 +13,11 @@ const Footer = () => {
                         <img src="/logo.png" className="-ml-2" alt="logo" />
                     </figure>
                     <div className=" lg:ml-2 md:ml-2  flex items-center gap-2">
-                        <CiFacebook className="size-8 " />
-                        <TiSocialLinkedinCircular className="size-8 " />
-                        <TiSocialTwitterCircular className="size-8 " />
+                        <Link to='https://www.facebook.com/'> <CiFacebook className="size-8 " /></Link>
+                        <Link to='https://www.linkedin.com/'>  <TiSocialLinkedinCircular className="size-8 " /></Link>
+                        <Link to='https://x.com/'><TiSocialTwitterCircular className="size-8 " /></Link>
+
+
                     </div>
                 </div>
 

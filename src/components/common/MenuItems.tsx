@@ -11,9 +11,8 @@ const MenuItems = () => {
         key: item.name,
         label: (
             <NavLink
-                className={
-                    `${({ isActive }) =>
-                        isActive ? 'border-b-2 border-[#1677FF] pb-1' : ''} text-md font-semibold`
+                className={({ isActive }) =>
+                    isActive ? 'border-b-2  border-[#1677FF] pb-1 text-md font-semibold' : 'text-md font-semibold'
                 }
                 to={`categories/${item.name}`}
             >
@@ -27,6 +26,10 @@ const MenuItems = () => {
         {
             name: 'Home',
             route: '/',
+        },
+        {
+            name: "Products",
+            route: '/products'
         },
         {
             name: 'Categories',
@@ -63,9 +66,8 @@ const MenuItems = () => {
                 ) : (
                     <li key={item.name}>
                         <NavLink
-                            className={
-                                `${({ isActive }) =>
-                                    isActive ? 'border-b-2 border-[#1677FF] pb-1' : ''} text-md`
+                            className={({ isActive }) =>
+                                isActive ? 'border-b-2 border-[#1677FF] pb-1 text-md' : 'text-md'
                             }
                             to={item.route}
                         >

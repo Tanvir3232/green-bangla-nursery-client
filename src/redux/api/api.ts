@@ -5,7 +5,7 @@ export const baseApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:5000/api',
     }),
-    tagTypes: ["product"],
+    tagTypes: ["product", "order"],
     endpoints: (builder) => ({
         getProducts: builder.query({
             query: () => {
@@ -54,7 +54,21 @@ export const baseApi = createApi({
                 body: data
             }),
             invalidatesTags: ['product']
+        }),
+        createOrder: builder.mutation({
+            query: (orderData) => ({
+                url: '/orders/create-order',
+                method: "POST",
+                body: orderData,
+            }),
+            invalidatesTags: ['order'],
         })
     })
 })
-export const { useGetProductsQuery, useRemoveProductMutation, useAddProductMutation, useGetProductQuery, useUpdateProductMutation } = baseApi;
+export const {
+    useGetProductsQuery,
+    useRemoveProductMutation,
+    useAddProductMutation,
+    useGetProductQuery,
+    useUpdateProductMutation,
+    useCreateOrderMutation } = baseApi;

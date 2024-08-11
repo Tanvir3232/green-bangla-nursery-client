@@ -4,7 +4,6 @@ import { addItem } from "@/redux/features/cartSlice";
 import { Rating } from "@smastrom/react-rating";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
 import { Button } from "../ui/button";
 const ProductDetails = () => {
     const { id } = useParams();
@@ -22,12 +21,7 @@ const ProductDetails = () => {
         e.stopPropagation()
         e.preventDefault()
         dispatch(addItem(product.data))
-        Swal.fire({
-            icon: 'success',
-            title: 'Product Added to Cart!',
-            text: 'Your product has been successfully added to Cart.',
-            confirmButtonText: 'OK',
-        });
+
     }
     return (
         <div className="flex flex-col lg:flex-row md:flex-row justify-between p-2 gap-5 md:p-4  lg:p-5 md:mx-10 mx-2 lg:mx-12">

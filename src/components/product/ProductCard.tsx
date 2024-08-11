@@ -2,7 +2,6 @@ import { addItem } from "@/redux/features/cartSlice";
 import { Rating } from "@smastrom/react-rating";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import { Button } from "../ui/button";
 
 interface Product {
@@ -26,12 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         dispatch(addItem(product));
-        Swal.fire({
-            icon: 'success',
-            title: 'Product Added to Cart!',
-            text: 'Your product has been successfully added to Cart.',
-            confirmButtonText: 'OK',
-        });
+
     };
 
     const { title, price, rating, image, _id } = product;

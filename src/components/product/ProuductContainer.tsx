@@ -36,9 +36,9 @@ const ProductContainer = () => {
         <section className="my-12 mx-4 lg:mx-12">
             <h1 className="text-4xl font-bold text-center text-[#083214]">Products</h1>
 
-            <div className="flex justify-between items-center mt-5">
+            <div className="flex flex-col-reverse lg:flex-row md:flex-row justify-between gap-5 items-center mt-5">
                 <h1 className="text-xl font-semibold text-[#083214]">Filter by Categories</h1>
-                <Search onSearch={handleSearchChange} className="w-3/5" placeholder="enter a tree name" size="large" enterButton allowClear />
+                <Search onSearch={handleSearchChange} className="lg:w-3/5 md:3/5 w-4/5" placeholder="enter a tree name" size="large" enterButton allowClear />
                 <PriceSortFilter />
             </div>
             <div className="flex flex-col lg:flex-row items-start justify-between mt-5">
