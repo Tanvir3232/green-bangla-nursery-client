@@ -6,7 +6,7 @@ const PriceSortFilter = () => {
 
     return (
         <div className="text-xl font-semibold text-center text-[#083214]">
-            <Select onValueChange={(value) => dispatch(setSort(value))}>
+            <Select onValueChange={(value: "default" | "low" | "high") => dispatch(setSort(value))}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Sort by price" />
                 </SelectTrigger>

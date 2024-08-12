@@ -13,7 +13,7 @@ interface Product {
 }
 
 // Define a type for the cart state
-interface CartState {
+export interface CartState {
     items: Product[];
     totalQuantity: number;
     totalPrice: number;

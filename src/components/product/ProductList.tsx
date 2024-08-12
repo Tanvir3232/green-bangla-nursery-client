@@ -1,12 +1,28 @@
 import { Pagination } from "antd";
 import { useState } from "react";
 import ProductCard from "./ProductCard";
+export type TProduct = {
+    _id: string;
+    category: string;
+    createdAt: string;
+    description: string;
+    image: string;
+    price: number;
+    rating: number;
+    stock: number;
+    title: string;
 
-const ProductList = ({ products }) => {
+}
+
+interface ProductListProps {
+    products: TProduct[];
+}
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
+    console.log("Products", products)
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10); // You can change this to the desired page size
 
-    const handlePageChange = (page, pageSize) => {
+    const handlePageChange = (page: number, pageSize: number) => {
         setCurrentPage(page);
         setPageSize(pageSize);
     };

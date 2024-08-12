@@ -10,12 +10,16 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Textarea } from '../ui/textarea';
-
-const EditProductModal = ({ productId, open, onClose }) => {
+interface EditProductModalProps {
+    productId: string;
+    open: boolean;
+    onClose: () => void;
+}
+const EditProductModal = ({ productId, open, onClose }: EditProductModalProps) => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { data: product, isLoading } = useGetProductQuery(productId, { skip: !open });
-    const [updateProduct, { isSuccess }] = useUpdateProductMutation();
+    const [updateProduct] = useUpdateProductMutation();
     const [selectedCategory, setSelectedCategory] = useState(product?.data?.category);
     const categories = useAppSelector(selectAllCategories);
 

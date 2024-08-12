@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAddProductMutation } from "@/redux/api/api";
 import { selectAllCategories } from "@/redux/features/categorySlice";
 import { useAppSelector } from "@/redux/hooks";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Button } from "../ui/button";
@@ -18,7 +20,7 @@ const AddProductModal = () => {
     const categories = useAppSelector(selectAllCategories);
 
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [addProduct, { isError, isSuccess }] = useAddProductMutation();
+    const [addProduct, { isSuccess }] = useAddProductMutation();
     const [dialogOpen, setDialogOpen] = useState(false);
 
     const onSubmit = async (formData: FieldValues) => {
@@ -43,8 +45,8 @@ const AddProductModal = () => {
                 confirmButtonText: 'OK',
             });
             reset(); // Reset the form after success
-        } catch (error) {
-            console.error('Error adding product:', error);
+        } catch (error: any) {
+            toast.error('Error adding product:', error);
 
         }
     };
@@ -140,13 +142,9 @@ const AddProductModal = () => {
                             </Label>
                             <Input id="image" inputMode="url" className="col-span-3" {...register("image", {
                                 required: true,
-                                pattern: {
-                                    value: /^(ftp|http|https):\/\/[^ "]+$/,
-                                    message: "Invalid URL"
-                                }
                             })} />
                             <div className="col-span-4 text-right">
-                                {errors.image && <span className="text-red-500">{errors.image.message}</span>}
+                                {errors.image && <span className="text-red-500">This field is required</span>}
                             </div>
                         </div>
                     </div>

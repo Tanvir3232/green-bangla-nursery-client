@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-
-const CartRow = ({ product }) => {
+import { TCartProduct } from "./CartList";
+interface CartRowProps {
+    product: TCartProduct;
+}
+const CartRow: React.FC<CartRowProps> = ({ product }) => {
     const { image, quantity, title, totalPrice, price, stock } = product;
     const dispatch = useDispatch();
     const [orderQuantity, setOrderQuantity] = useState(quantity);
@@ -14,16 +17,16 @@ const CartRow = ({ product }) => {
     }, [quantity]);
 
     const handleIncrement = () => {
-        if (orderQuantity < stock) {
+        if (orderQuantity! < stock) {
             dispatch(incrementQuantity(product));
-            setOrderQuantity(orderQuantity + 1);
+            setOrderQuantity(orderQuantity! + 1);
         }
     };
 
     const handleDecrement = () => {
-        if (orderQuantity > 1) {
+        if (orderQuantity! > 1) {
             dispatch(decrementQuantity(product));
-            setOrderQuantity(orderQuantity - 1);
+            setOrderQuantity(orderQuantity! - 1);
         }
     };
     const handleRemoveItem = () => {
@@ -42,20 +45,20 @@ const CartRow = ({ product }) => {
                 <h1 className="text-md md:text-lg lg:w-1/4 md:w-1/4 lg:text-xl font-semibold text-gray-700">{title}</h1>
                 <p className="text-sm text-gray-500"><strong>Price:</strong> ${price.toFixed(2)}</p>
 
-                <p className="text-sm text-gray-500"><strong>Total:</strong> ${totalPrice.toFixed(2)}</p>
+                <p className="text-sm text-gray-500"><strong>Total:</strong> ${totalPrice!.toFixed(2)}</p>
                 <div className="flex  items-center gap-2">
                     <button
                         onClick={handleDecrement}
                         className={`bg-gray-200 text-gray-700 px-2 py-1 rounded-md hover:bg-gray-300 ${orderQuantity === 1 ? 'cursor-not-allowed' : ''}`}
-                        disabled={orderQuantity === 1}
+                        disabled={orderQuantity! === 1}
                     >
                         -
                     </button>
                     <span className="text-lg font-medium">{orderQuantity}</span>
                     <button
                         onClick={handleIncrement}
-                        className={`bg-gray-200 text-gray-700 px-2 py-1 rounded-md hover:bg-gray-300 ${orderQuantity >= stock ? 'cursor-not-allowed' : ''}`}
-                        disabled={orderQuantity >= stock}
+                        className={`bg-gray-200 text-gray-700 px-2 py-1 rounded-md hover:bg-gray-300 ${orderQuantity! >= stock ? 'cursor-not-allowed' : ''}`}
+                        disabled={orderQuantity! >= stock}
                     >
                         +
                     </button>

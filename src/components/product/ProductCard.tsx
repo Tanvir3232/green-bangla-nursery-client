@@ -3,21 +3,12 @@ import { Rating } from "@smastrom/react-rating";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import { TProduct } from "./ProductList";
 
-interface Product {
-    _id: string;
-    name: string;
-    price: number;
-    stock: number;
-    quantity?: number;
-    totalPrice?: number;
-    image: string;
-    title: string;
-    rating: number;
-}
+
 
 interface ProductCardProps {
-    product: Product;
+    product: TProduct;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

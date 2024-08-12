@@ -11,24 +11,26 @@ const Category = () => {
     const categories = useAppSelector(selectAllCategories);
     const sort = useAppSelector(selectSort);
     const categoryData = categories.find(item => item.name == category);
-    const { data: products, isLoading, isError } = useGetProductsQuery();
-    const filteredProducts = products?.data.filter(item => item.category === category)
-        .sort((a, b) => {
+    const { data: products, isLoading, isError } = useGetProductsQuery({});
+    const filteredProducts = products?.data.filter((item: { category: string }) => item.category === category)
+        .sort((a: { price: number }, b: { price: number }) => {
             if (sort === 'low') return a.price - b.price;
             if (sort === 'high') return b.price - a.price;
             return 0;
         });
-
+    if (isError) {
+        return <p>Error loading products.</p>;
+    }
     return (
         <div className="w-full ">
             <figure className="w-full relative bg-slate-700 h-full">
                 <img
                     src='/category.png'
-                    alt={categoryData.name}
+                    alt={categoryData!.name}
                     className="object-cover w-full  h-full opacity-40"
                 />
                 <figcaption className="absolute inset-0 flex items-center justify-center">
-                    <p className="text-white md:text-4xl text-[12px] lg:text-5xl font-bold">{categoryData.name}</p>
+                    <p className="text-white md:text-4xl text-[12px] lg:text-5xl font-bold">{categoryData!.name}</p>
                 </figcaption>
             </figure>
             <section className="my-5 mx-4 lg:mx-12">

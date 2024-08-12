@@ -2,6 +2,7 @@ import { useGetProductQuery } from "@/redux/api/api";
 
 import { addItem } from "@/redux/features/cartSlice";
 import { Rating } from "@smastrom/react-rating";
+import { MouseEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Button } from "../ui/button";
@@ -17,7 +18,7 @@ const ProductDetails = () => {
 
     if (isError) return "some went wront"
     const { title, description, rating, price, image, category } = product.data;
-    const handleAddToCart = (e) => {
+    const handleAddToCart = (e: MouseEvent) => {
         e.stopPropagation()
         e.preventDefault()
         dispatch(addItem(product.data))

@@ -17,10 +17,10 @@ const CheckoutForm = () => {
     const [createOrder] = useCreateOrderMutation();
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Validate the form
+
         if (!customerName || !phone || !address) {
             toast.error("Please fill in all the fields.");
             return;

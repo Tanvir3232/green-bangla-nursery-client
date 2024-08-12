@@ -6,7 +6,7 @@ import { Input } from 'antd';
 
 import { selectSearchTerm, setSearchTerm } from "@/redux/features/searchSlice";
 import PriceSortFilter from "./PriceSortFilter";
-import ProductList from "./ProductList";
+import ProductList, { TProduct } from "./ProductList";
 const { Search } = Input;
 const ProductContainer = () => {
     const categories = useAppSelector(selectAllCategories);
@@ -15,20 +15,20 @@ const ProductContainer = () => {
     const dispatch = useAppDispatch();
 
     const searchTerm = useAppSelector(selectSearchTerm);
-    const { data: products, isLoading, isError } = useGetProductsQuery();
+    const { data: products, isLoading, isError } = useGetProductsQuery({});
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error loading products</p>;
 
     const filteredProducts = products?.data
-        ?.filter(product => selectedCategories.length === 0 || selectedCategories.includes(product.category))
-        .filter(product => product.title.toLowerCase().includes(searchTerm.toLowerCase()))
-        .sort((a, b) => {
+        ?.filter((product: TProduct) => selectedCategories.length === 0 || selectedCategories.includes(product.category))
+        .filter((product: TProduct) => product.title.toLowerCase().includes(searchTerm.toLowerCase()))
+        .sort((a: { price: number }, b: { price: number }) => {
             if (sort === 'low') return a.price - b.price;
             if (sort === 'high') return b.price - a.price;
             return 0;
         });
-    const handleSearchChange = (value) => {
+    const handleSearchChange = (value: string) => {
         dispatch(setSearchTerm(value));
     };
 

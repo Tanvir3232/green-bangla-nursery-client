@@ -5,14 +5,15 @@ import Swal from "sweetalert2";
 import { Button } from "../ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import EditProductModal from "./EditProductModal";
+import { TProduct } from "./ProductList";
 
 const ProductTable = () => {
-    const { data: products, isLoading, isError } = useGetProductsQuery();
+    const { data: products, isLoading, isError } = useGetProductsQuery({});
     const [removeProduct] = useRemoveProductMutation();
     const [editModalOpen, setEditModalOpen] = useState(false);
-    const [selectedProductId, setSelectedProductId] = useState(null);
+    const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
 
-    const handleDeleteProduct = (id) => {
+    const handleDeleteProduct = (id: string) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -33,7 +34,7 @@ const ProductTable = () => {
         });
     };
 
-    const handleEditProduct = (id) => {
+    const handleEditProduct = (id: string) => {
         setSelectedProductId(id);
         setEditModalOpen(true);
     };
@@ -64,7 +65,7 @@ const ProductTable = () => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {products?.data?.map((product) => (
+                            {products?.data?.map((product: TProduct) => (
                                 <TableRow key={product._id}>
                                     <TableCell className="font-medium">{product.title}</TableCell>
                                     <TableCell>{product.category}</TableCell>

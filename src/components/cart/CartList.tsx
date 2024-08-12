@@ -1,6 +1,18 @@
 import CartRow from "./CartRow";
+export interface TCartProduct {
+    _id: string;
+    image: string;
+    price: number;
+    quantity?: number;
+    stock: number;
+    title: string;
+    totalPrice?: number;
+}
 
-const CartList = ({ cartItems }) => {
+interface CartListProps {
+    cartItems: TCartProduct[];
+}
+const CartList: React.FC<CartListProps> = ({ cartItems }) => {
 
     return (
         <div className="space-y-2 pt-3">

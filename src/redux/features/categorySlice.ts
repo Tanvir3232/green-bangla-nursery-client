@@ -6,7 +6,7 @@ type TCategory = {
     icon: string;
 }
 
-type TInitialState = {
+export interface TInitialState {
     categories: TCategory[];
 }
 
