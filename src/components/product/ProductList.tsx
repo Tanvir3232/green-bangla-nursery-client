@@ -20,7 +20,7 @@ interface ProductListProps {
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
     console.log("Products", products)
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize, setPageSize] = useState(10); // You can change this to the desired page size
+    const [pageSize, setPageSize] = useState(8);
 
     const handlePageChange = (page: number, pageSize: number) => {
         setCurrentPage(page);

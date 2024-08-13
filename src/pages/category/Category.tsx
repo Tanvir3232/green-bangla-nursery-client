@@ -4,6 +4,7 @@ import { useGetProductsQuery } from "@/redux/api/api";
 import { selectAllCategories } from "@/redux/features/categorySlice";
 import { selectSort } from "@/redux/features/filterSlice";
 import { useAppSelector } from "@/redux/hooks";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
 const Category = () => {
@@ -23,6 +24,9 @@ const Category = () => {
     }
     return (
         <div className="w-full ">
+            <Helmet>
+                <title>{category} | GB Nursery</title>
+            </Helmet>
             <figure className="w-full relative bg-slate-700 h-full">
                 <img
                     src='/category.png'

@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </figure>
             <div>
                 <p><strong>Title:</strong> {title}</p>
-                <p><strong>Price:</strong> {price}</p>
+                <p><strong>Price:</strong> ${price}</p>
                 <div className="flex items-center gap-2">
                     <strong>Ratings:</strong>
                     <Rating className="size-5 max-w-32 text-yellow-500" readOnly value={rating} />
