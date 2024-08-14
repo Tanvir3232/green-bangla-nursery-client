@@ -1,11 +1,11 @@
-# Online Nursery Website 🌱 - Client
+# Green Bangla Nursery  🌱 - Client
 
 
 ## Introduction
 This website helps people buy plants and gardening tools online. You can easily look at different products, add them to your cart, and order them. The website is simple to use and lets you pay for your order when it arrives at your home (Cash on Delivery).
 
 ## Project Description
-The Online Nursery Website is a place where you can shop for plants and other gardening items. You can search, filter, and sort products to find exactly what you want. There is also a special section for managing products and categories, which is helpful for the website's owner.
+The Green Bangla Nursery Website is a place where you can shop for plants and other gardening items. You can search, filter, and sort products to find exactly what you want. There is also a special section for managing products and categories, which is helpful for the website's owner.
 
 
 
