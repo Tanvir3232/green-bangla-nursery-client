@@ -1,6 +1,7 @@
 import { useGetProductQuery, useUpdateProductMutation } from '@/redux/api/api';
 import { selectAllCategories } from '@/redux/features/categorySlice';
 import { useAppSelector } from '@/redux/hooks';
+import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
@@ -63,7 +64,7 @@ const EditProductModal = ({ productId, open, onClose }: EditProductModalProps) =
                 </DialogHeader>
                 {
                     isLoading
-                        ? <p>Loading...</p>
+                        ? <p><Spin /> Loading... </p>
                         : <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="grid gap-4 py-4">
                                 <div className="grid grid-cols-4 items-center gap-4">

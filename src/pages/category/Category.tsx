@@ -4,6 +4,7 @@ import { useGetProductsQuery } from "@/redux/api/api";
 import { selectAllCategories } from "@/redux/features/categorySlice";
 import { selectSort } from "@/redux/features/filterSlice";
 import { useAppSelector } from "@/redux/hooks";
+import { Spin } from "antd";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 
@@ -45,7 +46,7 @@ const Category = () => {
                     <PriceSortFilter />
                 </div>
                 {
-                    isLoading ? "Fetching data..."
+                    isLoading ? <p> <Spin /> Fetching data...</p>
                         : <ProductList products={filteredProducts} />
                 }
             </section>

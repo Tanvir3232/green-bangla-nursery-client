@@ -2,6 +2,7 @@ import { useGetProductQuery } from "@/redux/api/api";
 
 import { addItem } from "@/redux/features/cartSlice";
 import { Rating } from "@smastrom/react-rating";
+import { Spin } from "antd";
 import { MouseEvent } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
@@ -13,7 +14,7 @@ const ProductDetails = () => {
     const dispatch = useDispatch();
     const { data: product, isLoading, isError } = useGetProductQuery(id);
     if (isLoading) {
-        return "Loading..."
+        return <div> <Spin /> loading...</div>
     }
 
 

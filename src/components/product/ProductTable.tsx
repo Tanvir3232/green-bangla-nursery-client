@@ -1,4 +1,5 @@
 import { useGetProductsQuery, useRemoveProductMutation } from "@/redux/api/api";
+import { Spin } from "antd";
 import { useState } from "react";
 import { FaPenToSquare, FaRegTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
@@ -40,7 +41,7 @@ const ProductTable = () => {
     };
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <p> <Spin /> Loading...</p>;
     }
     if (isError) {
         return <p>Something went wrong</p>;
@@ -65,7 +66,7 @@ const ProductTable = () => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {products?.data?.map((product: TProduct) => (
+                            {products?.data?.slice()?.reverse()?.map((product: TProduct) => (
                                 <TableRow key={product._id}>
                                     <TableCell className="font-medium">{product.title}</TableCell>
                                     <TableCell>{product.category}</TableCell>
@@ -73,7 +74,7 @@ const ProductTable = () => {
                                     <TableCell>${product.price}</TableCell>
                                     <TableCell className="flex justify-center items-center">
                                         <figure className="w-40 h-28">
-                                            <img src={product.image} className="rounded-md w-full h-full object-cover" alt="" />
+                                            <img src={product.image} className="rounded-md w-full h-full object-cover" alt={`${product.title} image`} />
                                         </figure>
                                     </TableCell>
                                     <TableCell className="space-x-3">

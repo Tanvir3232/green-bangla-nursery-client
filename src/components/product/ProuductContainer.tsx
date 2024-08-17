@@ -2,7 +2,7 @@ import { useGetProductsQuery } from "@/redux/api/api";
 import { selectAllCategories } from "@/redux/features/categorySlice";
 import { selectSelectedCategories, selectSort, toggleCategory } from "@/redux/features/filterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { Input } from 'antd';
+import { Input, Spin } from 'antd';
 
 import { selectSearchTerm, setSearchTerm } from "@/redux/features/searchSlice";
 import PriceSortFilter from "./PriceSortFilter";
@@ -17,7 +17,7 @@ const ProductContainer = () => {
     const searchTerm = useAppSelector(selectSearchTerm);
     const { data: products, isLoading, isError } = useGetProductsQuery({});
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <p> <Spin /> Loading...</p>;
     if (isError) return <p>Error loading products</p>;
 
     const filteredProducts = products?.data

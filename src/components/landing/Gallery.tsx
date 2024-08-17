@@ -9,7 +9,7 @@ const Gallery = () => {
     return (
         <div className="my-6 mx-4 lg:mx-12">
             <h1 className="text-4xl my-5 font-bold text-center text-[#083214]">Gallery</h1>
-            <div className="grid grid-cols-6 gap-2 rounded-xl overflow-hidden">
+            <div className="grid grid-cols-6 lg:gap-2 md:gap-2 gap-1 rounded-xl overflow-hidden">
                 {
                     products?.data.map((product: TProduct, index: number) => {
                         const spanClass = index % 3 === 0 ? 'col-span-2 row-span-2' : 'col-span-1 row-span-1';
